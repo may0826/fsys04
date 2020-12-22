@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fs.mapper.OrderMapper">
+	<sql id="base_fields">
+		oid,otime,uid,pid,ostatus;
+	</sql>
+	
+	
+	<select id="findByoid" parameterType="int" resultType="Order">
+		SELECT <include refid="base_fields"/> FROM t_order WHERE oid=#{oid}
+	</select>
+	
+	<insert id="addSelective" parameterType="Order">
+		INSERT INTO t_order 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="oid != null">
+				oid, 
+			</if>
+			<if test="otime != null">
+				otime, 
+				</if>
+				<if test="uid != null">
+				uid, 
+			</if>
+			<if test="ostatus!= null">
+				ostatus, 
+			</if>
+			<if test="pid != null">
+				pid, 
+			</if>
+		</trim>
+		VALUE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="oid != null">
+				#{oid},
+			</if>
+			<if test="otime != null">
+				#{otime}, 
+			</if>
+			<if test="pid != null">
+				#{pid},
+			</if>
+			<if test="uid != null">
+				#{uid},
+			</if>
+			<if test="ostatus != null">
+				#{ostatus},
+			</if>
+			
+		</trim>
+	
+	</insert>
+	<delete id="deleteOrderInfo" parameterType="int"  >
+	
+	   DELETE FROM t_order WHERE oid=#{oid}
+	
+	</delete>
+	
+</mapper>

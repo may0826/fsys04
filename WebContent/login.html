@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<link href="css/base.css" rel="styleSheet" type="text/css">
+<link href="css/regist.css" rel="styleSheet" type="text/css">
+
+
+<script type="text/javascript">
+	if(window.self != window.top){
+		window.top.location.href= window.self.location.href;
+	}
+
+</script>
+</head>
+<body>
+	<div class="banner">
+		<span class="title">校园二手物品交易平台</span>
+
+		<div class="fpanel">
+			<span>欢迎您，</span><span id="sid">游客</span>还没注册？ 点击 <a
+				href="regist.html">这儿</a></span>
+		</div>
+	</div>
+
+	<div class="content">
+		<form action="lgi" method="post">
+		  <div class="inputer">
+		<div class="ihead">
+			登录信息
+		</div>
+		<div class="list">
+			<div class="both lf" style="text-color:#8000ff">
+				手机号
+			</div>
+			<div class="both rf">
+				<input class="textinput" type="text" name="op1" id="op1">
+			</div>
+		</div>
+		
+		<div class="list" >
+			<div class="both lf" style="text-color:#8000ff">
+				密码
+			</div>
+			<div class="both rf">
+				<input class="textinput" type="password" name="op2" id="op2">
+			</div>
+		</div>
+			<div class="list">
+			<button>立刻登录</button>
+			</div>
+			</div>
+			
+		</form>
+		
+	</div>
+
+</body>
+</html>

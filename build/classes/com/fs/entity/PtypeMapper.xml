@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fs.mapper.PtypeMapper">
+	<sql id="base_fields">
+		ptid,tname;
+	</sql>
+	
+	
+	<select id="findByPtid" parameterType="int" resultType="Ptype">
+		SELECT * FROM t_ptype WHERE ptid=#{ptid}
+	</select>
+	
+	<insert id="addSelective" parameterType="Ptype">
+		INSERT INTO t_ptype 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="ptid != null">
+				ptid, 
+			</if>
+			<if test="tname != null">
+				tname, 
+				</if>
+		</trim>
+		VALUE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="ptid != null">
+				#{ptid},
+			</if>
+			<if test="tname != null">
+				#{tname}, 
+			</if>
+			
+		</trim>
+	
+	</insert>
+	<delete id="deletePtypeInfo" parameterType="int"  >
+	
+	   DELETE FROM t_type WHERE ptid=#{ptid}
+	
+	</delete>
+	
+</mapper>

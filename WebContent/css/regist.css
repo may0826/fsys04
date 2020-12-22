@@ -1,0 +1,69 @@
+body{
+	color: #FFA500;
+	background: url(../images/bk_main.jpg) ;
+}
+.content{
+	width: 100%;
+	margin: 0px auto;
+	text-align:center;
+	
+}
+
+.inputer{
+	margin: 0px auto;
+	width: 700px;
+	height: auto;
+	margin-top: 20px;
+}
+.error{
+	text-align:center;
+}
+
+.ihead{
+	height: 60px;
+	
+	color:white;
+	font-size: 30px;
+	line-height: 80px;	
+	letter-spacing: 15px;
+	text-align:center;
+}
+
+.list{
+	margin-top: 15px;
+	height: 50px;
+}
+
+.both{
+	float: left;
+	height: 100%;
+	line-height: 50px;
+}
+
+.lf{
+	width: 100px;
+	text-align: right;
+	margin-right: 10px;
+	font-size: 16px;
+	color:white;
+}
+
+.rf{
+	text-align:left;
+	width: 500px;
+	color:white;
+}
+
+.textinput{
+	width: 500px;
+	border: #d7d6d8 1px solid;
+	height: 40px;
+	font-size: 18px;
+}
+
+.radioinput{
+	width: 20px;
+	height: 20px;
+	font-size: 16px;
+	margin-left: 10px;
+}

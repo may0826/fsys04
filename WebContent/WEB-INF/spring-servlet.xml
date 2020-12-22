@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/mvc
+						http://www.springframework.org/schema/mvc/spring-mvc.xsd
+						">
+		<!-- 自动扫描包，实现支持注解的IOC -->
+	<context:component-scan base-package="com.fs"/>	
+
+	<!-- 启用 mvc 专用的 注解  @RequestParam   @RequestMapper -->
+	<mvc:annotation-driven/>
+	<!-- 对静态资源 取消拦截 -->
+	<mvc:default-servlet-handler/>
+	<!--视图解析器  -->
+	<bean
+	class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+	id="internalResourceViewResolver">
+	<!-- 前缀 -->
+	
+	<!-- 后缀 -->
+	<property name="suffix" value=".jsp"/>
+	
+	</bean>
+	
+	 <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding">
+            <value>UTF-8</value>
+        </property>
+        <property name="maxUploadSize">
+            <value>32505856</value><!-- 上传文件大小限制为31M，31*1024*1024 -->
+        </property>
+        <property name="maxInMemorySize">
+            <value>4096</value>
+        </property>
+    </bean>
+  
+	
+	
+	
+	
+						
+</beans>

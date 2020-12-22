@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- 移动端的页面宽度等于设备宽度，缩放比为1 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/shop.css">
+
+<!--动画CSS插件-->
+<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+<style type="text/css">
+#test {
+	width: 100%;
+	padding: 10px;
+	height: 1000px;
+}
+#test1 {
+	width: 100%;
+	padding: 10px;
+	height: 1000px;
+}
+
+.inner {
+	display: inline-block;
+	padding: 20px;
+	text-align: center;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	width:300px;
+	height:370px;
+	
+}
+
+.inner:hover {
+	border: 1px solid deeppink;
+}
+
+.inner:hover h3 {
+	color: deeppink;
+}
+
+.inner img {
+	width: 200px;
+	height: 200px;
+	font-size: 0;
+}
+
+h3, span {
+	font-size: 20px;
+}
+</style>
+
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	
+	$(function() {
+		// 使用 ajax 来进行购物信息的请求
+		$.ajax("getproductbytname?tname=美妆", {
+			type : "GET",
+			dataType : "json",
+			success : function(data) {
+				var str = '';
+				// 注意：输出的i与obj分别为下标与单个的对象
+				$.each(data, function(i, obj) {
+					str += '<div class="inner">';
+					str += "<img src='images/" + obj.imga + "'/>";
+					str += '<h3>' + '名称：' + obj.pname + '</h3>';
+					str += '<span>' + '价格：￥' + obj.pprice + '</span>';
+					str += '<h3>' + '商品描述：' + obj.des + '</h3>';
+					str += '</div>';
+				});
+				$("#test").append(str);
+			}
+
+		});
+
+		// 使用 ajax 来进行用户信息的请求
+		$.getJSON("getuser", function(json) {
+			var phone = json.phone;
+			if (phone != null) {
+				$("#sid").html(phone);
+				$("#myself").css("display", "block");
+			}
+		});
+
+	});
+</script>
+<title>shop购物界面</title>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<!-- 当浏览器大小下于一定程度后的响应式图标-->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<!--设置商标-->
+				<a class="navbar-brand" href="#">校园二手交易平台</a> <span
+					class="navbar-brand">欢迎您</span>
+
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+
+				<ul class="nav navbar-nav navbar-right">
+
+					<li id="sid"></li>
+					<li><a href='login.html'>退出</a></li>
+					<li id="myself" dest="my.html"><a href="my.html">我的</a></li>
+
+					<li><a href="#" data-toggle="modal" data-target="#about">关于</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+	<div class="jumbotron wow slideInDown " action="search" method="post">
+		<h1>校园二手交易</h1>
+		<p>让闲置游起来</p>
+		<p>
+			<a class="btn btn-primary btn-lg" href="publish.html" role="button">发布商品</a>
+		</p>
+
+					<p>
+			<a class="btn btn-primary btn-lg" href="search.html" role="button">搜索</a>
+		</p>
+		
+
+	</div>
+
+	<!--秒杀板块-->
+	<div class="container wow slideInDown">
+		<div class="row">
+			<ul class="nav nav-tabs ">
+				<li role="presentation"><a href="shop.html">首页</a></li>
+				<li role="presentation"><a href="book.html">书籍</a></li>
+				<li role="presentation"><a href="cam.html">数码</a></li>
+				<li role="presentation"><a href="traffic.html">交通</a></li>
+				<li role="presentation"><a href="sport.html">运动</a></li>
+				<li role="presentation"  class="active"><a href="meizhuang.html">美妆</a></li>
+				<li role="presentation"><a href="zaihuo.html">杂货</a></li>
+			</ul>
+			</br>
+			<h1 class="wow slideInDown">人气精选：</h1>
+			</br>
+			<div id="test">
+				<!--假数据-->
+				<!--<div class="inner">
+				<img src="img/1.png"/>
+				<h3>名称：小米手机</h3>
+				<span>价格：1000</span>
+			</div>-->
+			</div>
+<div id="test1">
+				<!--假数据-->
+				<!--<div class="inner">
+				<img src="img/1.png"/>
+				<h3>名称：小米手机</h3>
+				<span>价格：1000</span>
+			</div>-->
+			</div>
+
+
+		</div>
+		<!--右侧边栏-->
+		<div class="right_go">
+			<p class="pull-right">
+				<a href="#top">回到顶部</a>
+			</p>
+		</div>
+
+		<script src="js/wow.min.js"></script>
+
+		<script>
+			$(function() {
+
+				new WOW().init();
+			})
+		</script>
+</body>
+</html>
